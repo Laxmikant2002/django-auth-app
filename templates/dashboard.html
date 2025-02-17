@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-gray-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Modern Auth</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body class="h-full">
+    {% include 'partials/navigation.html' %}
+    <div class="min-h-screen bg-gray-50">
+        <aside class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg">
+            <div class="p-6">
+                <h2 class="text-2xl font-bold text-gray-800">Dashboard</h2>
+            </div>
+            <nav class="mt-6">
+                <a href="{% url 'profile' %}" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
+                    <i class='bx bx-user mr-3'></i>
+                    Profile
+                </a>
+                <a href="{% url 'change_password' %}" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
+                    <i class='bx bx-lock-alt mr-3'></i>
+                    Security
+                </a>
+            </nav>
+        </aside>
+
+        <main class="ml-64 p-8">
+            <div class="flex justify-between items-center mb-8">
+                <h1 class="text-3xl font-bold">Welcome back, {{ user.username }}</h1>
+                <div class="flex items-center space-x-4">
+                    <a href="{% url 'logout' %}" 
+                       class="flex items-center px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg">
+                        <i class='bx bx-log-out mr-2'></i>
+                        Logout
+                    </a>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Add dashboard cards here -->
+            </div>
+        </main>
+    </div>
+    {% include 'partials/footer.html' %}
+</body>
+</html>
