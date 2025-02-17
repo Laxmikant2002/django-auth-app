@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-zinc-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Modern Auth</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body class="h-full">
+    <div class="min-h-full flex">
+        <div class="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+            <div class="max-w-sm mx-auto w-full space-y-8">
+                <div>
+                    <h2 class="text-3xl font-extrabold text-gray-900">
+                        Welcome Back
+                    </h2>
+                    <p class="mt-2 text-sm text-gray-600">
+                        Or <a href="{% url 'signup' %}" class="font-medium text-blue-600 hover:text-blue-500">
+                            create new account
+                        </a>
+                    </p>
+                </div>
+
+                {% if messages %}
+                <div class="rounded-md bg-rose-50 p-4">
+                    {% for message in messages %}
+                    <div class="flex items-center text-sm text-rose-700">
+                        <i class='bx bx-error-circle text-xl mr-2'></i>
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <form class="mt-8 space-y-6" method="POST">
+                    {% csrf_token %}
+                    <div class="rounded-md shadow-sm -space-y-px">
+                        <div class="relative">
+                            <label for="username_or_email" class="sr-only">Email or Username</label>
+                            <input id="username_or_email" name="username_or_email" type="text" required
+                                class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 
+                                placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 
+                                focus:border-blue-500 focus:z-10 sm:text-sm peer"
+                                placeholder="Email or Username">
+                            <label for="username_or_email" class="absolute left-3 -top-2.5 text-gray-500 text-sm transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm">Email or Username</label>
+                        </div>
+                        <div class="relative">
+                            <label for="password" class="sr-only">Password</label>
+                            <input id="password" name="password" type="password" autocomplete="current-password" required
+                                class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 
+                                placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 
+                                focus:border-blue-500 focus:z-10 sm:text-sm peer"
+                                placeholder="Password">
+                            <label for="password" class="absolute left-3 -top-2.5 text-gray-500 text-sm transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm">Password</label>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between">
+                        <div class="text-sm">
+                            <a href="{% url 'forgot_password' %}" class="font-medium text-blue-600 hover:text-blue-500">
+                                Forgot password?
+                            </a>
+                        </div>
+                    </div>
+
+                    <button type="submit"
+                        class="group relative w-full flex justify-center py-2 px-4 border border-transparent 
+                        text-sm font-medium rounded-md text-white bg-gradient-to-r from-blue-500 to-indigo-600 
+                        hover:from-indigo-600 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 
+                        focus:ring-blue-500 transition-all duration-200">
+                        Sign in
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="hidden lg:block relative w-0 flex-1">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-indigo-600 opacity-90"></div>
+            <img class="w-full h-full object-cover" src="https://source.unsplash.com/random/1920x1080/?technology" 
+                alt="Background">
+        </div>
+    </div>
+</body>
+</html>

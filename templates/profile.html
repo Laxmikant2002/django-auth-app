@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-zinc-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Modern Auth</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body class="h-full">
+    <div class="min-h-full flex flex-col">
+        <header class="bg-indigo-600 text-white py-4">
+            <div class="container mx-auto px-4">
+                <h1 class="text-3xl font-bold">Profile</h1>
+            </div>
+        </header>
+        <main class="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-md mx-auto w-full space-y-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-extrabold text-gray-900">Welcome, {{ user.username }}!</h2>
+                    <p class="mt-2 text-sm text-gray-600">Your Profile Details</p>
+                </div>
+                <div class="rounded-md bg-white p-6 shadow-md">
+                    <div class="space-y-4">
+                        <div class="text-center">
+                            <h3 class="text-xl font-bold text-gray-900">Name: {{ user.first_name }} {{ user.last_name }}</h3>
+                            <p class="text-gray-600">Email: {{ user.email }}</p>
+                            <p class="text-gray-600">Username: {{ user.username }}</p>
+                            <p class="text-gray-600">Last Login: {{ last_login|date:"D, d M Y H:i:s" }}</p>
+                        </div>
+                        <div class="space-y-4">
+                            <a href="{% url 'change_password' %}" class="block w-full text-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200">
+                                Change Password
+                            </a>
+                            <a href="{% url 'logout' %}" class="block w-full text-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-rose-500 hover:bg-rose-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500 transition-all duration-200">
+                                Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
